@@ -1,7 +1,10 @@
 /** @type {import('next').NextConfig} */
-
 const nextConfig = {
-  reactStrictMode: false
+  output: 'export',        // This makes it a static site
+  trailingSlash: true,     // Optional: makes URLs cleaner
+  images: {
+    unoptimized: true      // Important because you're using static export
+  }
 };
 
-module.exports = nextConfig;
+export default nextConfig;
