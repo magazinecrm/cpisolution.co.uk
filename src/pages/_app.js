@@ -4,6 +4,7 @@ import "@/vendors/font-awesome.min.css";
 import "@/vendors/lums-icon/style.css";
 import "@/fonts/spartan-mb/stylesheet.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+ 
 
 import { useRouter } from "next/router";
 import * as gtag from "../../lib/gtab";
@@ -36,12 +37,13 @@ const MyApp = ({ Component, pageProps }) => {
     };
   }, [router.events]);
 
-  return (
+ import { Analytics } from '@vercel/analytics/react'
 
-    <ContextProvider>
-      <Component {...pageProps} />
-    </ContextProvider>
-  );
-};
+return (
+  <ContextProvider>
+    <Component {...pageProps} />
+    <Analytics />
+  </ContextProvider>
+);
 
 export default MyApp;
