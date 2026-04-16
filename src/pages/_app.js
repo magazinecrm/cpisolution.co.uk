@@ -8,6 +8,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 import { useRouter } from "next/router";
 import * as gtag from "../../lib/gtab";
+import { Analytics } from '@vercel/analytics/react';
 
 import React, { useEffect } from "react";
 
@@ -37,13 +38,12 @@ const MyApp = ({ Component, pageProps }) => {
     };
   }, [router.events]);
 
- import { Analytics } from '@vercel/analytics/react'
-
-return (
-  <ContextProvider>
-    <Component {...pageProps} />
-    <Analytics />
-  </ContextProvider>
-);
+  return (
+    <ContextProvider>
+      <Component {...pageProps} />
+      <Analytics />
+    </ContextProvider>
+  );
+};
 
 export default MyApp;
