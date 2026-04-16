@@ -4,16 +4,12 @@ import "@/vendors/font-awesome.min.css";
 import "@/vendors/lums-icon/style.css";
 import "@/fonts/spartan-mb/stylesheet.css";
 import "bootstrap/dist/css/bootstrap.min.css";
- 
 
 import { useRouter } from "next/router";
 import * as gtag from "../../lib/gtab";
 
 import React, { useEffect } from "react";
-
-// import "react-circular-progressbar/dist/styles.css";
-// import "react-modal-video/css/modal-video.min.css";
-// import "tiny-slider/dist/tiny-slider.css";
+import { Analytics } from '@vercel/analytics/react'; // ✅ moved to top
 
 // extra css
 import "@/styles/style.css";
@@ -37,13 +33,12 @@ const MyApp = ({ Component, pageProps }) => {
     };
   }, [router.events]);
 
- import { Analytics } from '@vercel/analytics/react'
-
-return (
-  <ContextProvider>
-    <Component {...pageProps} />
-    <Analytics />
-  </ContextProvider>
-);
+  return (
+    <ContextProvider>
+      <Component {...pageProps} />
+      <Analytics /> {/* ✅ correct placement */}
+    </ContextProvider>
+  );
+};
 
 export default MyApp;
